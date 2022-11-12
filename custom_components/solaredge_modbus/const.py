@@ -244,8 +244,8 @@ BATTERY1_SENSOR_TYPES = {
     "BATTERY1_Power": ["Battery1 Power", "battery1_power", "W", "mdi:battery-charging-100"],
     "BATTERY1_Discharged": ["Battery1 Discharged", "battery1_energy_discharged", "kWh", None],
     "BATTERY1_Charged": ["Battery1 Charged", "battery1_energy_charged", "kWh", None],
-    "BATTERY1_Size_max": ["Battery1 Size Max", "battery1_size_max", "kWh", None],
-    "BATTERY1_Size_available": ["Battery1 Size Available", "battery1_size_available", "kWh", None],
+    "BATTERY1_Size_max": ["Battery1 Size Max", "battery1_size_max", "Wh", None],
+    "BATTERY1_Size_available": ["Battery1 Size Available", "battery1_size_available", "Wh", None],
     "BATTERY1_SOH": ["Battery1 State of Health", "battery1_state_of_health", "%", None],
     "BATTERY1_SOC": ["Battery1 State of Charge", "battery1_state_of_charge", "%", "mdi:battery-high"],
     "BATTERY1_Status": ["Battery1 Status", "battery1_status", None, None],
@@ -259,8 +259,8 @@ BATTERY2_SENSOR_TYPES = {
     "BATTERY2_Power": ["Battery2 Power", "battery2_power", "W", "mdi:battery-charging-100"],
     "BATTERY2_Discharged": ["Battery2 Discharged", "battery2_energy_discharged", "kWh", None],
     "BATTERY2_Charged": ["Battery2 Charged", "battery2_energy_charged", "kWh", None],
-    "BATTERY2_Size_max": ["Battery2 Size Max", "battery2_size_max", "kWh", None],
-    "BATTERY2_Size_available": ["Battery2 Size Available", "battery2_size_available", "kWh", None],
+    "BATTERY2_Size_max": ["Battery2 Size Max", "battery2_size_max", "Wh", None],
+    "BATTERY2_Size_available": ["Battery2 Size Available", "battery2_size_available", "Wh", None],
     "BATTERY2_SOH": ["Battery2 State of Health", "battery2_state_of_health", "%", None],
     "BATTERY2_SOC": ["Battery2 State of Charge", "battery2_state_of_charge", "%", "mdi:battery-high"],
     "BATTERY2_Status": ["Battery2 Status", "battery2_status", None, None],
@@ -283,6 +283,18 @@ BATTERY_STATUSSES = {
     4: "Discharging",
     6: "Idle",
     10: "Sleep"
+}
+
+EXPORT_CONTROL_MODE = {
+    0: "Disabled",
+    1: "Direct Export Limitation",
+    2: "Indirect Export Limitation",
+    4: "Production Limitation"
+}
+
+EXPORT_CONTROL_LIMIT_MODE = {
+    0: "Total",
+    1: "Per phase"
 }
 
 STOREDGE_CONTROL_MODE = {
@@ -309,6 +321,15 @@ STOREDGE_CHARGE_DISCHARGE_MODE = {
     5: "Discharge to match load",
     7: "Maximize self consumption",
 }
+
+EXPORT_CONTROL_SELECT_TYPES = [
+    ["Export control mode", "export_control_mode", 0xE000, EXPORT_CONTROL_MODE],
+    ["Export control limit mode", "export_control_limit_mode", 0xE001, EXPORT_CONTROL_LIMIT_MODE],
+]
+
+EXPORT_CONTROL_NUMBER_TYPES = [
+    ["Export control site limit", "export_control_site_limit", 0xE002, "f", {"min": 0, "max": 10000, "unit": "W"}],
+]
 
 STORAGE_SELECT_TYPES = [
     ["Storage Control Mode", "storage_contol_mode", 0xE004, STOREDGE_CONTROL_MODE],
